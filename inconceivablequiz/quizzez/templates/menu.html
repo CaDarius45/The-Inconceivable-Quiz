@@ -12,9 +12,9 @@
         <li><a>Play Quiz</a></li>
         <li><a href="{% url 'info' %}">how to</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'quiz-index' %}">Comunity</a></li>
+        <li><a href="{% url 'comunity' %}">Comunity</a></li>
         <li>
-            <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+            <form id="logout-form" method="post" action="{% url 'logout' %}">
               {% csrf_token %}
               <button type="submit">Log out</button>
             </form>

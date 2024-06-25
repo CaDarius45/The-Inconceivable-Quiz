@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/toys/toy-index.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<section class="card-container">
+<a href="{% url 'question-create' %}" class="btn danger">add questions</a>
+  {%for question in question_list %}
+    <div class="card">
+      <div class="card-bg"></div>
+      <a href="{% url 'question-detail' question.id %}">
+        <div class="card-content">
+          <h2>{{ question.name }}</h2>
+        </div>
+      </a>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

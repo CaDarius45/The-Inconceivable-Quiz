@@ -13,20 +13,39 @@
         <a href="{% url 'quiz-update' quiz.id %}" class="btn warn">Edit quiz name</a>
         <a href="{% url 'quiz-delete' quiz.id %}" class="btn danger">Delete</a>
     </div>
-    <div class="question-details">
-        {% if quiz.questions.count %} 
-        {% for question in quiz.questions.all %}
-          <div class="question-container">
-            <div class="color-block" style="background-color: {{ toy.color }}"></div>
-            <a href="{% url 'toy-detail' toy.id %}">
-              <p>A {{ toy.color }} {{ toy.name }}</p>
-            </a>
-          </div>
-        {% endfor %} 
-      {% else %}
-        <p class="no-toys">{{cat.name}} doesn't have any toys!</p>
-      {% endif %}
-    </div>
+  </div>
+</section>
+<section>
+  <div class="question-details">
+    {% if quiz.questions.count %} 
+    {% for question in quiz.questions.all %}
+      <div class="question-container">
+        <div class="color-block"></div>
+        <a href="{% url 'question-detail' question.id %}">
+          <p>A {{ question.name }}</p>
+        </a>
+      </div>
+      <form action="{% url 'remove-question' quiz.id question.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Remove question</button>
+      </form>
+    {% endfor %} 
+  {% else %}
+    <p class="no-questions">no questions!</p>
+  {% endif %}
+</div>
+</section>
+<section>
+  <div class="subsection-content">
+    {% for question in questions %}
+      <div class="toy-container">
+        <p>{{ question.name }} </p>
+        <form action="{% url 'add-question' quiz.id question.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn submit">add question</button>
+        </form>
+      </div>
+    {% endfor %}
   </div>
 </section>
 {% endblock %}
