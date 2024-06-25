@@ -1,0 +1,32 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/quizs/detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="quiz-container">
+  <div class="quiz-details">
+    <h1>{{ quiz.name }}</h1>
+    <p>{{ quiz.description }}</p>
+    <div class="quiz-actions">
+        <a href="{% url 'quiz-index'%}" class="btn danger">back</a>
+        <a href="{% url 'quiz-update' quiz.id %}" class="btn warn">Edit quiz name</a>
+        <a href="{% url 'quiz-delete' quiz.id %}" class="btn danger">Delete</a>
+    </div>
+    <div class="question-details">
+        {% if quiz.questions.count %} 
+        {% for question in quiz.questions.all %}
+          <div class="question-container">
+            <div class="color-block" style="background-color: {{ toy.color }}"></div>
+            <a href="{% url 'toy-detail' toy.id %}">
+              <p>A {{ toy.color }} {{ toy.name }}</p>
+            </a>
+          </div>
+        {% endfor %} 
+      {% else %}
+        <p class="no-toys">{{cat.name}} doesn't have any toys!</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="title-container">
+  
+</section>
+<section class="sidebar-container">
+    <ul>
+        <li><a>Play Quiz</a></li>
+        <li><a href="{% url 'info' %}">how to</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'quiz-index' %}">Comunity</a></li>
+        <li>
+            <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+              {% csrf_token %}
+              <button type="submit">Log out</button>
+            </form>
+          </li>
+        {% else %}
+        <li><a href="{% url 'login' %}">Returning User</a></li>
+        <li><a href="{% url 'signup' %}">New User</a></li>
+        {% endif %}
+    </ul>
+</section>
+{% endblock %}
