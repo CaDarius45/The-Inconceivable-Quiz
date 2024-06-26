@@ -43,7 +43,7 @@ def profile_update(request):
         form = UserUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('profile')  # Replace 'profile' with your actual profile view name or URL
+            return redirect('user-profile')  # Replace 'profile' with your actual profile view name or URL
     else:
         form = UserUpdateForm(instance=request.user)
     
@@ -113,12 +113,10 @@ class quizDelete(LoginRequiredMixin, DeleteView):
 #     return redirect('quiz-detail', quiz_id=quiz_id)
 
 def add_question(req, quiz_id, question_id):
-    # Note that you can pass a toy's id instead of the whole object
     Quiz.objects.get(id=quiz_id).questions.add(question_id)
     return redirect('quiz-detail', quiz_id=quiz_id)
 
 def remove_question(req, quiz_id, question_id):
-    # Note that you can pass a toy's id instead of the whole object
     Quiz.objects.get(id=quiz_id).questions.remove(question_id)
     return redirect('quiz-detail', quiz_id=quiz_id)
 

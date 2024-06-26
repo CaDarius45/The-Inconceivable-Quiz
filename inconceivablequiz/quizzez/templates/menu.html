@@ -1,28 +1,32 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+<link rel="stylesheet" href="{% static 'css/main_menu.css' %}" />
 {% endblock %} 
 {% block content %}
 <section class="title-container">
-  
+  <div class="cat-container">
+    <img src="{% static 'images/mini_bunny.gif' %}" alt="The Cat Collector Cat" />
+  </div>
 </section>
 <section class="sidebar-container">
+  <div class="card">
     <ul>
-        <li><a>Play Quiz</a></li>
-        <li><a href="{% url 'info' %}">how to</a></li>
+        <li class="btn warn"><a>Play Quiz</a></li>
+        <li class="btn start"><a href="{% url 'info' %}">how to</a></li>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'comunity' %}">Comunity</a></li>
-        <li>
+        <li class="btn start"><a href="{% url 'comunity' %}">Comunity</a></li>
+        <li class="btn start">
             <form id="logout-form" method="post" action="{% url 'logout' %}">
               {% csrf_token %}
               <button type="submit">Log out</button>
             </form>
           </li>
         {% else %}
-        <li><a href="{% url 'login' %}">Returning User</a></li>
-        <li><a href="{% url 'signup' %}">New User</a></li>
+        <li class="btn start"><a href="{% url 'login' %}">Returning User</a></li>
+        <li class="btn start"><a href="{% url 'signup' %}">New User</a></li>
         {% endif %}
     </ul>
+  </div>
 </section>
 {% endblock %}

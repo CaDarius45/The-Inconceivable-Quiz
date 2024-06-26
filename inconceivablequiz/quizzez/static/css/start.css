@@ -35,6 +35,7 @@ html {
     --submit: rgb(26, 128, 0);
     --warn: rgb(104, 102, 0);
     --danger: rgb(120, 0, 0);
+    --start: rgba(120, 0, 120, 0.9);
     --secondary: rgb(57, 57, 57);
     --card-box-shadow: 5px 5px 6px -1px #aaa;
     --font-xtreme: 4.2rem;
@@ -140,6 +141,11 @@ html {
   .danger {
     color: var(--danger);
     border-color: var(--danger);
+  }
+
+  .start {
+    color: var(--start);
+    border-color: var(--start);
   }
   
   .page-header h1 {
