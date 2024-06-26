@@ -5,14 +5,22 @@
 {% endblock %} 
 {% block content %}
 <section class="quiz-container">
+  {%if user != quiz.user %}
+  <div class="quiz-details">
+    <h1>{{ quiz.name }}</h1>
+    <p>{{ quiz.description }}</p>
+    <a href="{% url 'play-quiz' quiz.id%}" class="btn submit">Play quiz</a>
+  </div>
+  {% else %}
   <div class="quiz-details">
     <h1>{{ quiz.name }}</h1>
     <p>{{ quiz.description }}</p>
     <div class="quiz-actions">
-        <a href="{% url 'quiz-index'%}" class="btn danger">back</a>
-        <a href="{% url 'quiz-update' quiz.id %}" class="btn warn">Edit quiz name</a>
-        <a href="{% url 'quiz-delete' quiz.id %}" class="btn danger">Delete</a>
-    </div>
+      <a href="{% url 'play-quiz' quiz.id%}" class="btn submit">test quiz</a>
+      <a href="{% url 'quiz-index'%}" class="btn danger">back</a>
+      <a href="{% url 'quiz-update' quiz.id %}" class="btn warn">Edit quiz name</a>
+      <a href="{% url 'quiz-delete' quiz.id %}" class="btn danger">Delete</a>
+  </div>
   </div>
 </section>
 <section>
@@ -48,4 +56,5 @@
     {% endfor %}
   </div>
 </section>
+{% endif %}
 {% endblock %}

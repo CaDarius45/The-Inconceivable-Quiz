@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}"/>
+{% endblock %} 
+{% block content %}
+<section class="page-header">
+  <h1>User Page</h1>
+</section>
+<section class="card-container">
+    <h2>Update Profile</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+</section>
+{% endblock %}

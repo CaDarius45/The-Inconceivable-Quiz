@@ -5,7 +5,6 @@ from django.db import models
 from datetime import date
 import datetime
 
-
 class Question(models.Model):
     name = models.CharField(max_length=200)
     opt_1 = models.CharField(max_length=50)
@@ -18,6 +17,7 @@ class Question(models.Model):
 
     def get_absolute_url(self):
         return reverse('question-detail', kwargs={'pk': self.id})
+    
   
 class Quiz(models.Model):
     name = models.CharField(max_length=200)

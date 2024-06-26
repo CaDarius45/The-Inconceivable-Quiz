@@ -1,0 +1,62 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/quizs/detail.css' %}" />
+{% endblock %} 
+{% block content %}
+<section class="quiz-container">
+  <div class="quiz-details">
+    <h1>{{ quiz.name }}</h1>
+  </div>
+</section>
+<section>
+    <form action="/" method="post"></form>
+        {% for question in quiz.questions.all %}
+        <div id="question-{{ question.id }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>
+            <h2>{{ question }}</h2>
+            <h2>{{ forloop.counter }}</h2>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="answer_{{ question.opt_1 }}" value="{{ question.opt_1 }}">
+                        {{ question.opt_1 }}
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="answer_{{ question.opt_2 }}" value="{{ question.opt_2 }}">
+                        {{ question.opt_2 }}
+                    </label>
+                </li> 
+                <li>
+                    <label>
+                        <input type="radio" name="answer_{{ question.opt_3 }}" value="{{ question.opt_3 }}">
+                        {{ question.opt_3}}
+                    </label>
+                </li> 
+                <li>
+                    <label>
+                        <input type="radio" name="answer_{{ question.opt_4 }}" value="{{ question.opt_4 }}">
+                        {{ question.opt_4 }}
+                    </label>
+                </li> 
+            </ul>
+            {% if forloop.counter < total %}
+            <button type="button" onclick="nextQuestion({{ question.id }})">Next</button>
+            {% else %}
+            <button type="submit">Submit</button>
+            {% endif %}
+        </div>
+        {% endfor %} 
+    </form> 
+</section>
+
+<script>
+    function nextQuestion(currentId) {
+        var currentQuestion = document.getElementById('question-' + currentId);
+        currentQuestion.style.display = 'none';
+        var nextQuestion = document.getElementById('question-' + (currentId + 1));
+        nextQuestion.style.display = 'block';
+    }
+</script>
+{% endblock %}

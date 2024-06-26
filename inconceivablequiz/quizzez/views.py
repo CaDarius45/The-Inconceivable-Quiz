@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.http import HttpResponse
 from .models import Quiz, Question
-
+from .forms import UserUpdateForm
 
 #==========================start screen=============================
 class Home(LoginView):
@@ -34,12 +34,27 @@ def signup(req):
 def menu(req):
     return render(req, 'menu.html')
 
+def user_profile(req):
+    return render(req, 'profile.html')
+
+@login_required
+def profile_update(request):
+    if request.method == 'POST':
+        form = UserUpdateForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')  # Replace 'profile' with your actual profile view name or URL
+    else:
+        form = UserUpdateForm(instance=request.user)
+    
+    return render(request, 'profile_update.html', {'form': form})
+
 def instructions(req):
     return HttpResponse("instructions page")
 
 @login_required
 def comunity(req):
-    quizs = Quiz.objects.filter(user=req.user) 
+    quizs = Quiz.objects.all()
     return render(req, 'comunity.html', {'quizs': quizs})
 
 #==========================quiz creation=============================
@@ -55,6 +70,15 @@ def quiz_detail(request, quiz_id):
     return render(request, 'quizs/detail.html', {
         'quiz': quiz, 
         'questions':not_question
+    })
+
+@login_required
+def play_quiz(request, quiz_id):
+    quiz = Quiz.objects.get(id=quiz_id)
+    total_questions = quiz.questions.count()
+    return render(request, 'play_quiz.html', {
+        'quiz': quiz, 
+        'total': total_questions,
     })
 
 class QuizCreate(LoginRequiredMixin, CreateView):
