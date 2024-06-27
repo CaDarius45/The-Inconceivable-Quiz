@@ -1,18 +1,22 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/main_menu.css' %}" />
+<link rel="stylesheet" href="{% static 'css/screen.css' %}" />
 {% endblock %} 
 {% block content %}
-<section class="title-container">
-  <div class="cat-container">
+
+<section class="menu-container" >
+  <div class="title-container">
     <img src="{% static 'images/mini_bunny.gif' %}" alt="The Cat Collector Cat" />
+    <h1>THE INCONCEIVABLE QUIZ</h1>
   </div>
-</section>
-<section class="sidebar-container">
+  
+
+
+
   <div class="card">
     <ul>
-        <li class="btn warn"><a>Play Quiz</a></li>
+        <li class="btn start"><a>Play Quiz</a></li>
         <li class="btn start"><a href="{% url 'info' %}">how to</a></li>
         {% if user.is_authenticated %}
         <li class="btn start"><a href="{% url 'comunity' %}">Comunity</a></li>
@@ -29,4 +33,5 @@
     </ul>
   </div>
 </section>
+
 {% endblock %}

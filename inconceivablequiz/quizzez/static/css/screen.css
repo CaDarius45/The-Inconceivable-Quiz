@@ -1,18 +1,18 @@
 main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100vh;
   }
-  
+
   main > section {
     width: 100%;
     padding: 10px 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
   }
 
   a {
@@ -20,13 +20,23 @@ main {
     font-weight: 600;
     font-size: 16px;
   }
+
+  .title-container{
+    width: 80%;
+  }
+
+  .card {
+    width: 275px;
+    margin: 10px;
+  }
+
   .sidebar-container {
     padding: 0 30px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   .card-content {
     padding: 10px;
     width: 100%;
