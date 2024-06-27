@@ -94,7 +94,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'quizzes',
-            'USER': 'your_database_user', 
+            'USER': 'student', 
             'HOST': 'localhost',
             'PORT': '5432',
         }
