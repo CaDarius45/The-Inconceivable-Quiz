@@ -3,6 +3,18 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/quizs/detail.css' %}" />
 {% endblock %} 
+
+{% block header %}
+  <nav>
+    <ul>
+        <li><a href="{% url 'menu' %}">HOME</a></li> 
+        <li><a href="{% url 'user-profile' %}">profile</a></li> 
+        <li><a href="{% url 'quiz-index' %}">quizzes</a></li>
+        <li><a href="{% url 'question-index' %}">questions</a></li>
+    </ul>
+  </nav>
+{% endblock %} 
+
 {% block content %}
 <section class="quiz-container">
   {%if user != quiz.user %}

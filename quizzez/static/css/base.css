@@ -1,12 +1,6 @@
 html {
     box-sizing: border-box;
   }
-
-  *,
-  *::before, 
-  *::after {
-    box-sizing: inherit;
-  }
   
   body {
     margin: 0;
@@ -22,6 +16,8 @@ html {
     --button-bg: rgb(245, 245, 245);
     --button-bg-hover: rgb(226, 226, 226);
     --submit: rgb(26, 128, 0);
+    --blu: rgb(26, 128, 128);
+    --gre: rgb(26, 128, 0);
     --warn: rgb(255, 102, 0);
     --danger: rgb(220, 20, 30);
     --secondary: rgb(57, 57, 57);
@@ -41,25 +37,35 @@ html {
   }
   
   main {
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 100vh;
     padding: 0 10px;
     background-image: url('/static/images/bunnies_background.png');
     background-size: cover;
     background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   main > section {
-    width: 100%;
+    width: 75%;
+    height: 80%;
+    margin: 10px; 
     padding: 10px 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: row-reverse;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid black;
+    border-radius: 10%;
   }
-  
-  h1 {
-    font-size: var(--font-xl);
+
+  .container {
+    width: 80%;
+    height: 80%;
+    margin: 10px; 
   }
 
   nav {
@@ -87,25 +93,17 @@ html {
   nav li {
     padding: 5px 8px;
   }
-
-  .container {
-    width: 80%;
-    height: 80%;
-    margin: 10px; 
-  }
   
   .btn {
     font-size: var(--font-l);
     padding: 8px 16px;
-    border-radius: 6px;
+    border-radius: 20px;
     border-width: 2px;
     border-style: solid;
     text-decoration: none;
     background-color: var(--button-bg);
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    font-family: inherit;
-    margin-right: 10px;
   }
   
   .btn:hover {
@@ -132,23 +130,12 @@ html {
     border-color: var(--danger);
   }
 
-  .start {
-    color: var(--start);
-    border-color: var(--start);
+  .blu {
+    color: var(--blu);
+    border-color: var(--blu);
   }
 
-  #logout-form button {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 16px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    font-family: inherit;
+  .gre {
+    color: var(--gre);
+    border-color: var(--gre);
   }
-  
-  #logout-form button:hover {
-    color: var(--link-hover-color);
-  } 

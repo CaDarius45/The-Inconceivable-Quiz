@@ -6,26 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="" />
-    <link rel="stylesheet" href="{% static 'css/start.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <title>INCONCEIVABLE</title>
     {% block head %} 
     {% endblock %}
   </head>
   <body>
     <header>
-      <div class="header-logo-container">
-      </div>
-      <nav>
-        <ul>
-            <li><a href="{% url 'menu' %}">HOME</a></li> 
-            <li><a href="{% url 'user-profile' %}">profile</a></li> 
-            <li><a href="{% url 'quiz-index' %}">quizzes</a></li>
-            <li><a href="{% url 'question-index' %}">questions</a></li>
-        </ul>
-      </nav>
+      {% block header %} {% endblock %}
     </header>
     <main>
-     <section class="container" style="background-color: white">
+     <section>
         {% block content %} 
         {% endblock %}
      </section>

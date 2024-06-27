@@ -3,6 +3,18 @@
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}"/>
 {% endblock %} 
+
+{% block header %}
+  <nav>
+    <ul>
+        <li><a href="{% url 'menu' %}">HOME</a></li> 
+        <li><a href="{% url 'user-profile' %}">profile</a></li> 
+        <li><a href="{% url 'quiz-index' %}">quizzes</a></li>
+        <li><a href="{% url 'question-index' %}">questions</a></li>
+    </ul>
+  </nav>
+{% endblock %} 
+
 {% block content %}
 <section class="page-header">
   <h1>User Page</h1>

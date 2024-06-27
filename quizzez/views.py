@@ -34,6 +34,9 @@ def signup(req):
 def menu(req):
     return render(req, 'menu.html')
 
+def play(req):
+    return HttpResponse("TO BE WORKED ON")
+
 def user_profile(req):
     return render(req, 'profile.html')
 
