@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/quizs/index.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/quizs/ind.css' %}"/>
 {% endblock %} 
 
 {% block header %}
@@ -11,24 +11,32 @@
         <li><a href="{% url 'user-profile' %}">profile</a></li> 
         <li><a href="{% url 'quiz-index' %}">quizzes</a></li>
         <li><a href="{% url 'question-index' %}">questions</a></li>
+        <li>
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+          </form>
+        </li>
     </ul>
   </nav>
-{% endblock %} 
+{% endblock %}  
 
 {% block content %}
-<section class="page-header">
-  <h1>Your Quizzez</h1>
-  <li><a href="{% url 'quiz-create' %}">Create a quiz</a></li>
-</section>
-<section class="card-container">
-  {% for quiz in quizs %}
-    <div class="card">
-      <a href="{% url 'quiz-detail' quiz.id %}">
-        <div class="card-content">
-          <h2 class="card-title">{{ quiz.name }}</h2>
-        </div>
-      </a>
-    </div>
-  {% endfor %}
-</section>
+<div class="page">
+  <section class="page-header">
+    <h1>Your Quizzez</h1>
+    <a href="{% url 'quiz-create' %}" class="btn">Create a quiz</a>
+  </section>
+  <section class="card-container">
+    {% for quiz in quizs %}
+      <div class="card">
+        <a href="{% url 'quiz-detail' quiz.id %}">
+          <div class="card-content">
+            <h2 class="card-title">{{ quiz.name }}</h2>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </section>
+</div>
 {% endblock %}

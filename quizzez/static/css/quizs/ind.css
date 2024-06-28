@@ -1,0 +1,70 @@
+.page{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.page-header{
+    align-self:center;
+
+    >h1{
+        font-size: 30px;
+    }
+}
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.card, .quiz {
+    width: 275px;
+    min-height: 80px;
+    max-height: 100px;
+    margin: 5px;
+    text-align: center;
+    border-radius: 5%;
+    overflow: hidden;
+}
+
+.card {
+    background-color:rgb(20, 220, 20);
+    border: 4px solid rgb(20, 50, 20);
+}
+
+.card:hover {
+    width: 375px;
+    margin: 10px;
+    background-color: transparent;
+    border-color: rgb(20, 220, 20);
+}
+
+.quiz-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+}
+
+.quiz {
+    background-color:rgb(200, 20, 200);
+    border: 4px solid rgb(20, 50, 20);
+}
+
+.quiz:hover {
+    width: 375px;
+    margin: 10px;
+    background-color: transparent;
+    border-color: rgb(200, 20, 200);
+}
+
+.card-content, .quiz-content {
+    padding: 10px;
+}
+
+.card > a, .quiz > a {
+    text-decoration: none;
+    color: var(--text-color);
+}
