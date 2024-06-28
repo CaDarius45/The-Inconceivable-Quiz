@@ -11,6 +11,7 @@ class Question(models.Model):
     opt_2 = models.CharField(max_length=50)
     opt_3 = models.CharField(max_length=50)
     opt_4 = models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name
@@ -30,9 +31,6 @@ class Quiz(models.Model):
     
     def get_absolute_url(self):
         return reverse('quiz-detail', kwargs={'quiz_id': self.id})
-    
-    # def was_published_recently(self):
-    #     return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)

@@ -35,7 +35,7 @@ def menu(req):
     return render(req, 'menu.html')
 
 def play(req):
-    return HttpResponse("TO BE WORKED ON")
+    return render(req, 'game.html')
 
 def user_profile(req):
     return render(req, 'profile.html')
@@ -103,17 +103,6 @@ class quizDelete(LoginRequiredMixin, DeleteView):
     success_url = '/quizzes'
 
 #==========================question creations=============================
-# def add_question(req, quiz_id):
-#     # create a ModelForm instance using the data in request.POST
-#     form = QuestionForm(req.POST)
-#     # validate the form
-#     if form.is_valid():
-#         # don't save the form to the db until it
-#         # has the cat_id assigned
-#         new_question = form.save(commit=False)
-#         new_question.quiz_id = quiz_id
-#         new_question.save()
-#     return redirect('quiz-detail', quiz_id=quiz_id)
 
 def add_question(req, quiz_id, question_id):
     Quiz.objects.get(id=quiz_id).questions.add(question_id)
@@ -131,7 +120,12 @@ class QuestionDetail(LoginRequiredMixin, DetailView):
 
 class QuestionCreate(LoginRequiredMixin, CreateView):
     model = Question
-    fields = '__all__'
+    fields = ['name', 'opt_1', 'opt_2', 'opt_3', 'opt_4']
+    def form_valid(self, form):
+        # Assign the logged in user (self.request.user)
+        form.instance.user = self.request.user  # form.instance is the quiz
+        # Let the CreateView do its job as usual
+        return super().form_valid(form)
 
 class QuestionUpdate(LoginRequiredMixin, UpdateView):
     model = Question

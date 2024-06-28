@@ -48,17 +48,17 @@
       {% if quiz.questions.count %} 
       {% for question in quiz.questions.all %}
         <div class="ques">
-          {%if user == quiz.user %}
+          {%if user == question.user %}
           <a href="{% url 'question-detail' question.id %}">
             <p>A {{ question.name }}</p>
           </a>
+          {% else %}
+            <p>A {{ question.name }}</p>
+          {% endif %}
           <form action="{% url 'remove-question' quiz.id question.id %}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">Remove question</button>
           </form>
-          {% else %}
-            <p>A {{ question.name }}</p>
-          {% endif %}
         </div>
       {% endfor %} 
       {% else %}

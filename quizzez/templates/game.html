@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<section class="menu-container" >
+    <section class="logo-container" >
+    <div>
+        <a href="{% url 'menu'%}"><img src="{% static 'images/mini_fly.gif' %}" alt="A flying Cat" /></a>
+    </div>
+    <h2><i>"THE GREAT INCONCEIVABLE QUIZ" is experiencing some techinal difficulties, please check back in later on</i></h2>
+    </section>
+</section>
+{% endblock %}

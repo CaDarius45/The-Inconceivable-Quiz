@@ -28,6 +28,13 @@
           <h1>{{ quiz.name }}</h1>
     </section>
     <section class="choice-container">
+        {%if total == 0 %}
+        <div>
+            <a href="{% url 'quiz-index'%}"><img src="{% static 'images/mini_kawaii.gif' %}" alt="jumping kawaii" /></a>
+            <a class="btn danger">back</a>
+            <h1>nothing to see here unless you wanna feed me</h1>
+        </div>
+        {% else %}
         <form action="{% url 'comunity' %}" >
             {% for question in quiz.questions.all %}
             <div class="choices" id="question-{{ question.id }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>
@@ -56,6 +63,7 @@
             </div>
             {% endfor %} 
         </form> 
+        {% endif %}
     </section>
       
     <script>

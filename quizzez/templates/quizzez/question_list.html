@@ -31,11 +31,17 @@
   <section class="quiz-container">
       {%for question in question_list %}
         <div class="quiz">
+          {%if user == question.user %}
           <a href="{% url 'question-detail' question.id %}">
             <div class="quiz-content">
               <h2>{{ question.name }}</h2>
             </div>
           </a>
+          {% else %}
+            <div class="quiz-content">
+              <h2>{{ question.name }}</h2>
+            </div>
+          {% endif %}
         </div>
       {% endfor %}
     </section>

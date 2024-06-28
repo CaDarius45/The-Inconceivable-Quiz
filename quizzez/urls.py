@@ -26,5 +26,4 @@ urlpatterns = [
     path('questions/<int:pk>/delete', views.QuestionDelete.as_view(), name='question-delete'),
     path('quizzes/<int:quiz_id>/add-question/<int:question_id>/', views.add_question, name='add-question'),
     path('quizzes/<int:quiz_id>/remove-question/<int:question_id>/', views.remove_question, name='remove-question'),
-    #path('quizzes/<int:quiz_id>/add-question', views.add_question, name='add-question'),
 ]

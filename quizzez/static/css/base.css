@@ -14,7 +14,6 @@ html {
     align-items: center;
     min-height: 100vh;
     --nav-bg: rgba(104, 197, 248, 0.7);
-    --nav-bg-ff: rgba(104, 197, 248, 0.9);
     --link-hover-color: rgb(16, 56, 158);
     --button-bg: rgb(245, 245, 245);
     --button-bg-hover: rgb(226, 226, 226);
@@ -23,10 +22,8 @@ html {
     --gre: rgb(26, 128, 0);
     --warn: rgb(255, 102, 0);
     --danger: rgb(220, 20, 30);
-    --secondary: rgb(74, 148, 218);
     --font-btn: 1.5rem;
     --font-box: 1.7rem;
-    --card-border-radius: 6px;
   }
   
   ul {
@@ -133,11 +130,6 @@ html {
   .submit {
     color: var(--submit);
     border-color: var(--submit);
-  }
-  
-  .secondary {
-    color: var(--secondary);
-    border-color: var(--secondary);
   }
   
   .warn {
