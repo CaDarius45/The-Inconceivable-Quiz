@@ -1,14 +1,38 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/toys/toy-detail.css' %}" />
+<link rel="stylesheet" href="{% static 'css/quizs/detai.css' %}" />
 {% endblock %} 
+
+{% block header %}
+  <nav>
+    <ul>
+        <li><a href="{% url 'menu' %}">HOME</a></li> 
+        <li><a href="{% url 'user-profile' %}">profile</a></li> 
+        <li><a href="{% url 'quiz-index' %}">quizzes</a></li>
+        <li><a href="{% url 'question-index' %}">questions</a></li>
+        <li>
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+          </form>
+        </li>
+    </ul>
+  </nav>
+{% endblock %} 
+
 {% block content %}
 
 <div class="card">
   <div class="card-bg" ></div>
   <div class="card-content">
     <h2>{{ question.name }}</h2>
+    <div>
+      <h3>{{question.opt_1}}</h3>
+      <h3>{{question.opt_2}}</h3>
+      <h3>{{question.opt_3}}</h3>
+      <h3>{{question.opt_4}}</h3>
+    </div>
   </div>
 </div>
 <a href="{% url 'question-update' question.id %}" class="btn warn">Edit</a>
