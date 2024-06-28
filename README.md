@@ -11,7 +11,7 @@
 
 
 ### 📡website resources
-- [DeviantArt]([https://www.deviantart.com/](https://www.deviantart.com/mydreammagic](https://www.deviantart.com/mydreammagic))
+- [DeviantArt](https://www.deviantart.com/mydreammagic](https://www.deviantart.com/mydreammagic))
 - [FontSpace](https://www.fontspace.com/how-to-do-something-font-f14840)
 
 ## 🖥️Technologies used:
