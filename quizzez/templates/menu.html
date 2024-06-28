@@ -6,6 +6,7 @@
 {% block content %}
 
 <section class="menu-container" >
+<section class="logo-container" >
   <div>
     <img src="{% static 'images/mini_bunny.gif' %}" alt="The Cat Collector Cat" />
   </div>
@@ -18,13 +19,7 @@
         <a href="{% url 'play-game' %}"><li class="btn blu">Play Quiz</li></a>
         <a href="{% url 'info' %}"><li class="btn gre">how to</li></a>
         {% if user.is_authenticated %}
-        <a href="{% url 'comunity' %}"><li class="btn start">Comunity</li></a>
-        <li class="btn start">
-            <form id="logout-form" method="post" action="{% url 'logout' %}">
-              {% csrf_token %}
-              <button type="submit">Log out</button>
-            </form>
-          </li>
+        <a href="{% url 'comunity' %}"><li class="btn blu">Comunity</li></a>
         {% else %}
         <a href="{% url 'login' %}"><li class="btn blu">Returning User</li></a>
         <a href="{% url 'signup' %}"><li class="btn gre">New User</li></a>
@@ -32,5 +27,5 @@
     </ul>
   </div>
 </section>
-
+</section>
 {% endblock %}

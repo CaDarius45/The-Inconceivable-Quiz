@@ -28,6 +28,7 @@ html {
     --secondary: rgb(57, 57, 57);
     --card-box-shadow: 5px 5px 6px -1px #aaa;
     --font-btn: 1.5rem;
+    --font-box: 1.7rem;
     --card-border-radius: 6px;
   }
   
@@ -57,7 +58,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row-reverse;
+    flex-direction: column;
     background-color: rgba(255, 255, 255, 0.5);
     border: 2px solid black;
     border-radius: 10%;
@@ -105,6 +106,11 @@ html {
     background-color: var(--button-bg);
     font-weight: 700;
     cursor: pointer;
+  }
+
+  form{
+    width: 50%;
+    height: 50%;
   }
   
   .btn:hover {

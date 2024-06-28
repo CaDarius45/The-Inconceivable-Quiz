@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+<link rel="stylesheet" href="{% static 'css/for.css' %}" />
 {% endblock %}
 {% block content %}
-
-<section class="logo-container">
-</section>
-<section>
-  <form action="{% url 'home' %}" method="post" class="login">
-    <h1>Login</h1>
-    {% csrf_token %} {{ form.as_p }}
-    <input type="hidden" name="next" value="{{ next }}" />
+<div class="page-header">
+  <h1>Login</h1>
+</div>
+<div>
+  {% if error_message %}
+  <p class="error-txt">{{ error_message }}</p>
+  {% endif %}
+  <form action="" method="post" class="form-container">
+    {% csrf_token %} 
+    <table>
+      {{ form.as_table }}
+    </table>
     <button type="submit" class="btn submit">Login</button>
   </form>
-</section>
+</div>
+
+<a href="{% url 'menu' %}" class="btn blu">Back</a>
+
 {% endblock %}

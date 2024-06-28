@@ -11,6 +11,12 @@
         <li><a href="{% url 'user-profile' %}">profile</a></li> 
         <li><a href="{% url 'quiz-index' %}">quizzes</a></li>
         <li><a href="{% url 'question-index' %}">questions</a></li>
+        <li>
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+          </form>
+        </li>
     </ul>
   </nav>
 {% endblock %} 
