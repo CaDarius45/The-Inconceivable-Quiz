@@ -32,11 +32,12 @@ def signup(req):
     return render(req, 'signup.html', context)
 
 def menu(req):
-    return render(req, 'menu.html')
+    return render(req, 'menu/menu.html')
 
 def play(req):
-    return render(req, 'game.html')
+    return render(req, 'menu/game.html')
 
+@login_required
 def user_profile(req):
     return render(req, 'profile.html')
 
@@ -53,12 +54,12 @@ def profile_update(request):
     return render(request, 'profile_update.html', {'form': form})
 
 def instructions(req):
-    return HttpResponse("instructions page")
+    return render(req, 'menu/instruction.html')
 
 @login_required
 def comunity(req):
     quizs = Quiz.objects.all()
-    return render(req, 'comunity.html', {'quizs': quizs})
+    return render(req, 'menu/comunity.html', {'quizs': quizs})
 
 #==========================quiz creation=============================
 @login_required
@@ -103,11 +104,11 @@ class quizDelete(LoginRequiredMixin, DeleteView):
     success_url = '/quizzes'
 
 #==========================question creations=============================
-
+@login_required
 def add_question(req, quiz_id, question_id):
     Quiz.objects.get(id=quiz_id).questions.add(question_id)
     return redirect('quiz-detail', quiz_id=quiz_id)
-
+@login_required
 def remove_question(req, quiz_id, question_id):
     Quiz.objects.get(id=quiz_id).questions.remove(question_id)
     return redirect('quiz-detail', quiz_id=quiz_id)

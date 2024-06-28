@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/menu.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<section class="menu-container" >
+    <section class="logo-container" >
+    <div>
+        <a href="{% url 'menu'%}"><img src="{% static 'images/mini_cat.gif' %}" alt="A flying Cat" /></a>
+    </div>
+    <h2><i>You really dont need instruction at this point of time, just go click around, make some quizzez and questions.</i></h2>
+    </section>
+</section>
+{% endblock %}
