@@ -1,0 +1,19 @@
+section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: 'HowToDoSomething', Arial, sans-serif;
+    animation: typwrite 5s steps(18, end) forwards;
+    font-size: 70px;
+}
+
+@keyframes typwrite {
+    from { width: 0 }
+    to { width: 100% }
+}

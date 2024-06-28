@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<link rel="stylesheet" href="{% static 'css/start.css' %}" />
 {% endblock %}
 {% block content %}
 
-<section class="logo-container">
-  <div class="title-container">
+<section>
+  <div>
     <h1>THE INCONCEIVABLE QUIZ</h1>
   </div>
-  <button><a href="{% url 'menu' %}">click to proceed</a></button>
+  <a href="{% url 'menu' %}" class="btn">click to proceed</a>
 </section>
+
 {% endblock %}

@@ -1,6 +1,11 @@
 html {
     box-sizing: border-box;
   }
+
+  @font-face {
+    font-family: 'HowToDoSomething';
+    src: url('../fonts/HowToDoSomething-7pKl.ttf') format('truetype');
+  }
   
   body {
     margin: 0;
@@ -22,11 +27,7 @@ html {
     --danger: rgb(220, 20, 30);
     --secondary: rgb(57, 57, 57);
     --card-box-shadow: 5px 5px 6px -1px #aaa;
-    --font-xtreme: 4.2rem;
-    --font-xxl: 3.6rem;
-    --font-xl: 2.4rem;
-    --font-l: 1.8rem;
-    --font-reg: 1.6rem;
+    --font-btn: 1.5rem;
     --card-border-radius: 6px;
   }
   
@@ -95,11 +96,11 @@ html {
   }
   
   .btn {
-    font-size: var(--font-l);
-    padding: 8px 16px;
+    font-size: var(--font-btn);
+    padding: 5px 10px;
     border-radius: 20px;
     border-width: 2px;
-    border-style: solid;
+    border-style: ridge;
     text-decoration: none;
     background-color: var(--button-bg);
     font-weight: 700;
