@@ -4,7 +4,7 @@
 <div class="page-header">
   <h1>Delete question?</h1>
 </div>
-<h2>Are you sure you want to delete {{ question.name }}?</h2>
+<h2>Are you sure you want to delete the question: "{{ question.name }}"?</h2>
 <form action="" method="post" class="form">
   {% csrf_token %}
   <a href="{% url 'question-detail' question.id %}" class="btn secondary">Cancel</a>

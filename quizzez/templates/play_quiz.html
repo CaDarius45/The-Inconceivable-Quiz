@@ -1,55 +1,70 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/quizs/detail.css' %}" />
+<link rel="stylesheet" href="{% static 'css/play.css' %}" />
 {% endblock %} 
-{% block content %}
-<section class="quiz-container">
-  <div class="quiz-details">
-    <h1>{{ quiz.name }}</h1>
-  </div>
-</section>
-<section>
-    <form action="{% url 'comunity' %}" >
-        {% for question in quiz.questions.all %}
-        <div id="question-{{ question.id }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>
-            <h2>{{ question }}</h2>
-            <h2>{{ forloop.counter }}</h2>
-                <input type="radio" id="opt1" name="answer_{{ question.opt_1 }}" value="{{ question.opt_1 }}">
-                <label for="opt1">
-                    {{ question.opt_1 }}
-                </label>
-                
-                <label>
-                <input type="radio" name="answer_{{ question.opt_2 }}" value="{{ question.opt_2 }}">
-                    {{ question.opt_2 }}
-                </label>
-                
-                <label>
-                <input type="radio" name="answer_{{ question.opt_3 }}" value="{{ question.opt_3 }}">
-                    {{ question.opt_3}}
-                </label>
-                
-                <label>
-                <input type="radio" name="answer_{{ question.opt_4 }}" value="{{ question.opt_4 }}">
-                    {{ question.opt_4 }}
-                </label>   
-            {% if forloop.counter < total %}
-            <button type="button" onclick="nextQuestion({{ question.id }})">Next</button>
-            {% else %}
-            <button type="submit">Finished</button>
-            {% endif %}
-        </div>
-        {% endfor %} 
-    </form> 
-</section>
 
-<script>
-    function nextQuestion(currentId) {
-        var currentQuestion = document.getElementById('question-' + currentId);
-        currentQuestion.style.display = 'none';
-        var nextQuestion = document.getElementById('question-' + (currentId + 1));
-        nextQuestion.style.display = 'block';
-    }
-</script>
+{% block header %}
+  <nav>
+    <ul>
+        <li><a href="{% url 'menu' %}">HOME</a></li> 
+        <li><a href="{% url 'user-profile' %}">profile</a></li> 
+        <li><a href="{% url 'quiz-index' %}">your quizzes</a></li>
+        <li><a href="{% url 'comunity' %}">all quizzes</a></li>
+        <li><a href="{% url 'question-index' %}">questions</a></li>
+        <li>
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+          </form>
+        </li>
+    </ul>
+  </nav>
+{% endblock %} 
+
+{% block content %}
+<div class="page">
+    <section class="page-header">
+          <h1>{{ quiz.name }}</h1>
+    </section>
+    <section class="choice-container">
+        <form action="{% url 'comunity' %}" >
+            {% for question in quiz.questions.all %}
+            <div class="choices" id="question-{{ question.id }}" {% if forloop.counter > 1 %}style="display: none;"{% endif %}>
+                <div class="choice-top">
+                    <h2>{{ question }}</h2>
+                </div>
+
+                <div class="choice-bot">
+                    <input type="radio" id="opt_1" name="answer" value="{{ question.opt_1 }}">
+                    <label for="opt_1">{{ question.opt_1 }}</label>
+                      
+                    <input type="radio" id="opt_2" name="answer" value="{{ question.opt_2 }}">
+                    <label for="opt_2">{{ question.opt_2 }}</label>
+                      
+                    <input type="radio" id="opt_3" name="answer" value="{{ question.opt_3 }}">
+                    <label for="opt_3">{{ question.opt_3}}</label>
+                    
+                    <input type="radio" id="opt_4" name="answer" value="{{ question.opt_4 }}">
+                    <label for="opt_4">{{ question.opt_4 }}</label>  
+                </div>  
+                {% if forloop.counter < total %}
+                <button class="btn warn" type="button" onclick="nextQuestion({{ question.id }})">Next</button>
+                {% else %}
+                <button class="btn submit" type="submit">Finished</button>
+                {% endif %}
+            </div>
+            {% endfor %} 
+        </form> 
+    </section>
+      
+    <script>
+        function nextQuestion(currentId) {
+            var currentQuestion = document.getElementById('question-' + currentId);
+            currentQuestion.style.display = 'none';
+            var nextQuestion = document.getElementById('question-' + (currentId + 1));
+            nextQuestion.style.display = 'block';
+        }
+    </script>
+</div>
 {% endblock %}

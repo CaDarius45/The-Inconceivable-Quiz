@@ -1,0 +1,30 @@
+.page-header{
+    border: 5px solid black;
+    border-radius: 40px;
+    padding: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.page-header:hover{
+    border: 10px solid white;
+    background-color: bisque;
+}
+
+.info-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.info{
+    margin: 2px;
+    padding: 2px;
+}
+
+hr{
+    width: 800px;
+}

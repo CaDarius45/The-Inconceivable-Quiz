@@ -1,0 +1,56 @@
+.page{
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: 86%;
+    height: 80%;
+}
+
+.page-header{
+    align-self: center;
+    text-align: center;
+    font-size: 45px;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+}
+
+.choice-container{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: center;
+}
+
+.choices{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.choice-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    > h3{
+        margin-left: 50px;
+    }
+}
+
+.choice-bot{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.choice-bot label {
+    text-align: center; 
+    cursor: pointer;
+}
+
+button{
+    margin-top: 20px;
+    width: 50%;
+}

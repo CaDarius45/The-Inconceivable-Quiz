@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/toys/toy-index.css' %}" />
+<link rel="stylesheet" href="{% static 'css/quizs/ind.css' %}" />
 {% endblock %} 
 
 {% block header %}
@@ -9,7 +9,8 @@
     <ul>
         <li><a href="{% url 'menu' %}">HOME</a></li> 
         <li><a href="{% url 'user-profile' %}">profile</a></li> 
-        <li><a href="{% url 'quiz-index' %}">quizzes</a></li>
+        <li><a href="{% url 'quiz-index' %}">your quizzes</a></li>
+        <li><a href="{% url 'comunity' %}">all quizzes</a></li>
         <li><a href="{% url 'question-index' %}">questions</a></li>
         <li>
           <form id="logout-form" method="post" action="{% url 'logout' %}">
@@ -22,19 +23,21 @@
 {% endblock %} 
 
 {% block content %}
-
-<section class="card-container">
-<a href="{% url 'question-create' %}" class="btn danger">add questions</a>
-  {%for question in question_list %}
-    <div class="card">
-      <div class="card-bg"></div>
-      <a href="{% url 'question-detail' question.id %}">
-        <div class="card-content">
-          <h2>{{ question.name }}</h2>
+<div class="page">
+  <section class="page-header">
+    <h1>QUESTIONS</h1>
+    <a href="{% url 'question-create' %}" class="btn submit">add questions</a>
+  </section>
+  <section class="quiz-container">
+      {%for question in question_list %}
+        <div class="quiz">
+          <a href="{% url 'question-detail' question.id %}">
+            <div class="quiz-content">
+              <h2>{{ question.name }}</h2>
+            </div>
+          </a>
         </div>
-      </a>
-    </div>
-  {% endfor %}
-</section>
-
+      {% endfor %}
+    </section>
+</div>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'css/profil.css' %}"/>
 {% endblock %} 
 
 {% block header %}
@@ -9,28 +9,31 @@
     <ul>
         <li><a href="{% url 'menu' %}">HOME</a></li> 
         <li><a href="{% url 'user-profile' %}">profile</a></li> 
-        <li><a href="{% url 'quiz-index' %}">quizzes</a></li>
+        <li><a href="{% url 'quiz-index' %}">your quizzes</a></li>
+        <li><a href="{% url 'comunity' %}">all quizzes</a></li>
         <li><a href="{% url 'question-index' %}">questions</a></li>
+        <li>
+          <form id="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log out</button>
+          </form>
+        </li>
     </ul>
   </nav>
-{% endblock %} 
+{% endblock %}  
 
 {% block content %}
-<section class="page-header">
-  <h1>User Page</h1>
-</section>
-<div class="card-container">
-  
-    <div class="card">
-      
-        <div class="card-content">
-          <a href="{% url 'profile_update'%}">
-            <h2 class="card-title">{{ user }}</h2>
-          </a>
-        </div>
-     
+<a href="{% url 'profile_update'%}">
+  <section class="page-header">
+    <h1>{{ user }} Page</h1>
+  </section>
+</a>
+<div class="info-container">
+    <div class="info">
+          <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+          <h4>{{ user.email }}</h4>
     </div>
-   
-  
+    <hr>
+    <h1>NO INFORMANTION HERE YET</h1>
 </div>
 {% endblock %}
